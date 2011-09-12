@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "BindingProviders";
+}
+
+
+@section JavaScript{
+    <script type="text/javascript" src="@Url.Content("~/Js/bindingConventions.js")"> </script>
+    <script type="text/javascript" src="@Url.Content("~/Js/bindingProviders.js")"> </script>
+    <script type="text/javascript" src="@Url.Content("~/Js/binding.js")"> </script>
+}
+
+<h1>Binding Providers</h1>
+<div class="person-editor">
+    <h3>Person</h3>
+    <p>First name: <input class="first-name" /></p>
+    <p>Last name: <input class="last-name" /></p>    
+</div>
+
+<div id="weather-list">
+    <h3>Weather</h3>
+    <table>
+        <thead><tr><th>City name</th><th>Temperature</th></tr></thead>
+        <tbody class="cities-list">
+            <tr>
+                <td class="city"></td>
+                <td class="temp"></td>                
+            </tr>
+        </tbody>
+    </table>
+    <button class="add-city">Add city</button>
+</div>

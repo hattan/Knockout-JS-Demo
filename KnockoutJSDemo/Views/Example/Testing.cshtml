@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "DependentObservable";
+}
+
+@section JavaScript{
+    <script type="text/javascript" src="@Url.Content("~/Js/testing.js")"> </script>
+}
+
+<h1>Testing</h1>
+<p>
+    <a href="/JSTests/SpecRunner.html" target=_blank>Launch Test Runner</a>
+</p>
+
+First Name: <input type="text" data-bind="
+                                    value: firstName,
+                                    valueUpdate : 'afterkeydown'
+                                    "/>
+<br />
+
+Last Name: <input type="text" data-bind="value:lastName, valueUpdate : 'afterkeydown'" />
+
+<br />
+
+Age: <input type="text" data-bind="value: Age, valueUpdate : 'afterkeydown'" />
+
+<Br />
+
+<span data-bind="text: validationMessage" style="color:Red"></span>
+
+<div>
+    <h2>Details:</h2>
+    <hr />
+    
+    First Name: <span data-bind=" text : firstName"></span> <br /><br />
+
+    Last Name: <span data-bind=" text : lastName"></span><br /><br />
+
+    Age: <span data-bind=" text : Age"></span><br />
+</div>
+

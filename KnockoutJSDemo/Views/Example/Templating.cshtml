@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Templating";
+}
+
+@section JavaScript{
+    <script type="text/javascript" src="@Url.Content("~/Js/templating.js")"> </script>
+}
+
+<h1>Templating</h1>
+
+
+<h2>Using JQuery Template Looping</h2>
+<ul data-bind="template: { name:'jqTaskTemplate'}"></ul>
+<script type="text/x-jquery-tmpl" id="jqTaskTemplate">
+    {{each tasks}}
+        <li> 
+            ${name}  
+
+            {{if complete}} 
+                 - <strong>Finished!</strong>
+            {{/if}}
+
+       </li>
+   {{/each}}
+</script>
+
+<br /><br />
+
+<h2>Using Knockout Foreach</h2>
+<ul data-bind="template: { name:'koTaskTemplate', foreach: tasks}"></ul>
+<script type="text/x-jquery-tmpl" id="koTaskTemplate">
+            <li data-bind='css : {green : complete, red : !complete}'>
+            ${name}  
+
+            {{if complete}} 
+                 - <span style='font-weight:bold'>Finished!</span>
+            {{/if}}
+
+       </li>
+</script>
+
+<!--<li style="color: {{if complete}} green {{else}} red {{/if}} " > -->

@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "GoogleMaps";
+}
+
+@section JavaScript{
+    <script type="text/javascript" src="@Url.Content("~/Js/googleMaps.js")"> </script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+}
+
+
+<h1>Google Maps Integration</h1>
+<div id="map_canvas" style=" height: 650px;width:49%;float:left"></div> 
+<div style="width:46%;float:right">
+    <ul data-bind="template: { name:'addressTemplate', foreach: markers}"></ul>
+    <script type="text/x-jquery-tmpl" id="addressTemplate">
+                <li>
+                    ${title}  - ${address}
+                </li>
+    </script>
+
+
+  <div> 
+    <label>Name:</label> <input type="text" data-bind="value:newName" /> <Br />
+    <label>Address:</label> <input type="text" data-bind="value:newAddress" > <Br />
+    <input type="button" value="Add" data-bind="click: addNewAddress"> 
+  </div> 
+</div>
+
+<!--
+A few locations near disneyland.
+
+Denny's - 3000 W Chapman Ave, Orange, CA 92868
+Angel Stadium - 2000 East Gene Autry Way Anaheim, CA 92806-6143
+Honda Center - 2695 East Katella Avenue, Anaheim, CA
+-->

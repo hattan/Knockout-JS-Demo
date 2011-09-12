@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "WithBinding";
+}
+
+@section JavaScript{
+<script type="text/javascript">
+    function personModel() {
+        this.firstName = ko.observable("Bert");
+        this.lastName = ko.observable("Bertington");
+    }
+
+    function weatherModel() {
+        this.cities = ko.observableArray([
+        { city: "London", temperature: 22 },
+        { city: "Paris", temperature: 26 }
+    ]);
+
+        this.addItem = function () {
+            this.cities.push({ city: "New city", temperature: "Something" })
+        }
+    }
+
+    function appViewModel() {
+        this.person = new personModel();
+        this.weather = new weatherModel();
+    };
+
+    ko.applyBindings(new appViewModel());
+</script>
+}
+<h1>With  Binding</h1>
+<div data-bind="with: person">
+    <h3>Person</h3>
+    <p>First name: <input data-bind="value: firstName" /></p>
+    <p>Last name: <input data-bind="value: lastName" /></p>    
+</div>
+
+<div data-bind="with: weather">
+    <h3>Weather</h3>
+    <table>
+        <thead><tr><th>City name</th><th>Temperature</th></tr></thead>
+        <tbody data-bind="foreach: cities">
+            <tr>
+                <td data-bind="text: city"></td>
+                <td data-bind="text: temperature"></td>                
+            </tr>
+        </tbody>
+    </table>
+    <button data-bind="click: addItem">Add city</button>
+</div>

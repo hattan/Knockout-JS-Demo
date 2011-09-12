@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Hello World";
+}
+
+@section JavaScript{
+<script type="text/javascript">
+
+    var viewModel = { 
+        firstName : ko.observable("bob"),
+        lastName  : ko.observable("smith")
+    };
+    ko.applyBindings(viewModel);
+    
+    
+</script>
+}
+
+<h1>Hello World</h1>
+
+First Name: <input type="text" data-bind="
+                                    value: firstName,
+                                    valueUpdate : 'afterkeydown'
+                                    "/>
+<br />
+Last Name: <input type="text" data-bind="value:lastName" />
+<div>
+    <h2>Details:</h2>
+    <hr />
+    <span data-bind=" text : firstName"></span> 
+    <br />
+    <input type="text"  data-bind="value : lastName" />
+</div>

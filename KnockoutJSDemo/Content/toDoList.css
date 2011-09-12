@@ -1,0 +1,79 @@
+﻿    
+ .todoList
+ {
+     width:600px;
+ }
+.header{
+    text-align:center;
+    font-weight:bold;
+    color:#333333;
+    width:70%;
+    margin-bottom:20px;
+}
+
+input[type="text"]{
+    width:70%;
+    padding:10px;
+    font-size:19px;
+    font-weight:normal;
+}
+
+
+
+.todoList li{
+    font-size:20px;
+    color:#3b3b3b;
+    width:100%;
+    height:40px;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+
+.delete{
+    width: 23px;
+    height: 23px;
+    cursor:pointer;
+    display: none;
+    float:right;
+    background:#ffffff url('images/dialog-no-3.png') no-repeat right center;    
+}
+
+.todoList li:hover .delete {
+      display: block;
+    }
+
+
+.todoList .footer{
+    padding:15px;
+    font-size:14px;
+    color:#555555;
+    width:70%;
+    background-color: #fff;
+}
+
+.itemCount{
+    font-weight:bold;
+    color:#000;
+}
+
+.disabled{
+    text-decoration:line-through;
+    color:#808080;
+}
+
+.clearItems{
+    float:right;
+    text-decoration:underline;
+    cursor:pointer;
+    
+}
+
+.display{
+    float:left;
+    height:40px;
+    border:0px solid black;
+    border-bottom:1px solid #999999;
+     width:73%;
+    padding-left:10px;
+    padding-bottom:0px;
+}

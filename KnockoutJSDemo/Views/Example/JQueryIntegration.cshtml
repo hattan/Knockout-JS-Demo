@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "JQueryIntegration";
+}
+
+@section JavaScript{
+<script type="text/javascript">
+    var viewModel = {
+        message: ko.observable("Hello World from Model"),
+        counter: 0
+    };
+    ko.applyBindings(viewModel);
+
+
+    $(function () {
+        $("#BtnTest").click(function () {
+            viewModel.counter++;
+            viewModel.message("You clicked on the button " + viewModel.counter + " times");
+        });
+    });
+
+</script>
+}
+<h2>JQuery Integration</h2>
+
+<span data-bind="text: message"></span> <br /><br />
+
+<input type="button" id="BtnTest" value="Change Message" />

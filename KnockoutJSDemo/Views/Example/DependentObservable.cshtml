@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "DependentObservable";
+}
+
+@section JavaScript{
+<script type="text/javascript">
+
+    var viewModel = {
+        firstName: ko.observable("bob"),
+        lastName: ko.observable("smith")
+    };
+
+    viewModel.fullName = ko.dependentObservable(function () {
+        return this.firstName() + ' ' + this.lastName();
+    },viewModel);
+
+    ko.applyBindings(viewModel);
+    
+</script>
+}
+
+<h1>Dependent Observable - Short Form</h1>
+
+First Name: <input type="text" data-bind="
+                                    value: firstName,
+                                    valueUpdate : 'afterkeydown'
+                                    "/>
+<br />
+
+Last Name: <input type="text" data-bind="value:lastName, valueUpdate : 'afterkeydown'" />
+
+<div>
+    <h2>Details:</h2>
+    <hr />
+
+    Inline Data Binding  : <span data-bind=" text : firstName() + ' ' + lastName() "></span> <br />
+
+    Dependent Observable : <span data-bind=" text : fullName "></span> 
+
+    <!--Using a dependent obsevable is preferred over inline complex binding because you can unit test it. 
+    It's also easier to find syntax errors since it's code and not just a string-->
+</div>
+

@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Templating";
+}
+
+@section JavaScript{
+    <script type="text/javascript" src="@Url.Content("~/Js/customBinding.js")"> </script>
+}
+
+<h1>Custom Binding</h1>
+
+
+State: <input type="text" id="languages" data-bind="autoComplete: states" />
+

@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "ControlFlowBindings";
+}
+@section JavaScript{
+<script type="text/javascript">
+    function appViewModel() {
+        this.products = ko.observableArray([
+        { name: "XBox", manufacturer: { company: "Microsoft"} },
+        { name: "PlayStation", manufacturer: { company: "Sony"} },
+        { name: "Banana", manufacturer: null },
+        { name: "Wii", manufacturer: { company: "Nintendo"} }
+    ]);
+    };
+
+    ko.applyBindings(new appViewModel());
+</script>
+}
+<h1>Control Flow Bindings</h1>
+<h3>Products</h3>
+
+<ul data-bind="foreach: products">
+    <li>
+        <strong data-bind="text: name"></strong>
+        <em data-bind="if: manufacturer">
+            &mdash; made by <span data-bind="text: manufacturer.company"></span>
+        </em>
+    </li>
+</ul>

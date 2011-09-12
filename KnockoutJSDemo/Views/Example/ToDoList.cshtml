@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "ToDoList";
+}
+@section JavaScript{
+    <script type="text/javascript" src="@Url.Content("~/Js/todolist.js")"> </script>
+}
+<link href="@Url.Content("~/Content/toDoList.css")" rel="stylesheet" type="text/css" />
+
+<div class="todoList">
+    <div class="header">Todos</div>
+
+    <input 
+        placeholder="What needs to be done?"
+        type="text" 
+        data-bind="
+        event: {keypress :addItem},
+        value: itemToAdd, 
+        valueUpdate:'afterkeyup'"
+    />
+
+
+    <ul data-bind='template: {name: "listTemplate", foreach: items}'></ul>
+
+    <div class="footer" data-bind="visible:items().length>0">
+    <span class="itemCount" data-bind="text: remainingItemCount()"></span>
+        item<span data-bind="visible: remainingItemCount() > 1">s</span> left.
+        <span data-bind="visible: clearedItemCount() >0,click: removeClearedItems" class="clearItems">
+            Clear <span data-bind="text: clearedItemCount()" ></span>
+            completed item<span data-bind="visible: clearedItemCount() > 1">s</span>
+        </span>
+    </div>
+</div>
+
+<script type="text/html" id="listTemplate">
+<li>
+    <div class="display" data-bind="visible: (!editing())">
+        <input type="checkbox" data-bind="checked: cleared" /> 
+
+        <span data-bind="
+            text: item, 
+            css:{disabled: cleared}, 
+            event: {
+                dblclick: function(){viewModel.editItem($data)}
+            }
+        "></span>
+
+        <span class="delete"
+            data-bind="click: function() { viewModel.deleteItem($data)}">
+        </span>
+    </div>
+
+    <input type="text" data-bind="
+        value: item,
+        visible: editing,
+        event: {
+            blur: function(){viewModel.displaytItem($data)},
+            keypress : function(event) {viewModel.saveEdit(event,$data);return true;},
+            
+        }    
+    "/>
+</li>
+</script>
+
+

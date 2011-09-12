@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Templating";
+}
+
+@section JavaScript{
+    <script type="text/javascript" src="@Url.Content("~/Js/cascading.js")"> </script>
+}
+
+<h1>Cascading Drop Down List</h1>
+
+
+
+<select data-bind="
+        options: Companies,
+        optionsText :'Name',
+        value: selectedCompany,
+        optionsCaption: 'Select One'
+"></select>
+
+<br/><br/>
+
+<select data-bind="
+        options: selectedCompany() ? selectedCompany().Models : '' ,
+        value: selectedModel,
+        optionsCaption: 'Select One',
+        visible : selectedCompany()
+"></select>
+    
+<br/><br/>   
+
+<div data-bind="visible: selectedModel">
+    You selected: 
+    <span data-bind = "text : selectedModel" class="result"></span>
+</div>
+
+<style type="text/css">
+.result{
+    font-weight:bold;
+    color:red;
+}
+</style>
+
+
